@@ -1,17 +1,33 @@
 ## Asliddin Abdivasiyev
 
-Website: [azizovich.uz](http://azizovich.uz)
+* Website: [azizovich.uz](http://azizovich.uz)
+* LinkedIn: [Asliddin Abdivasiyev](https://linkedin.com/in/asliddin-abdivasiyev)
 ### Skills
 
 - Golang
 - Php
-- JS, ReactJS
+  - Yii2
+- JS
+  - ReactJS
+  - ElectronJS
+  - ExpressJS
+- Java
+  - Spring MVC
+  - Spring Boot
 - Html, css, sass
 - A little bit mobile dev
+  - SwiftUI
+  - Android Java
 - Docker and docker products
 - Git
-- Postgres, MySQL, ClickHouse, Cassandra
-- Kafka, RabbitMQ
+- Databases
+  - Postgres
+  - MySQL
+  - ClickHouse
+  - Cassandra
+- Message brokers
+  - Kafka
+  - RabbitMQ
 - Microservices
 
 **My favourite code in my life**
