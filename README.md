@@ -1,10 +1,15 @@
 ## Asliddin Abdivasiyev
 
+__Middle Backend Developer__
+
 * Website: [azizovich.uz](http://azizovich.uz)
 * LinkedIn: [Asliddin Abdivasiyev](https://linkedin.com/in/asliddin-abdivasiyev)
 ### Skills
 
 - Golang
+  - Gin
+  - sqlx
+  - etc.
 - Php
   - Yii2
 - JS
@@ -15,35 +20,13 @@
   - Spring MVC
   - Spring Boot
 - Html, css, sass
-- A little bit mobile dev
-  - SwiftUI
-  - Android Java
 - Docker and docker products
 - Git
 - Databases
   - Postgres
-  - MySQL
   - ClickHouse
-  - Cassandra
+  - Redis
 - Message brokers
   - Kafka
-  - RabbitMQ
+  - Nats
 - Microservices
-
-**My favourite code in my life**
-
-```golang
-package main
-
-import "github.com/abdivasiyev/life/human"
-
-func main() {
-    programmer := human.Init()
-
-    for programmer.IsAlive() {
-        programmer.Eat()
-        programmer.WriteCode()
-        programmer.Sleep()
-    }
-}
-```
