@@ -30,3 +30,5 @@ __Middle Backend Developer__
   - Kafka
   - Nats
 - Microservices
+
+<p>&nbsp;<img align="left" src="https://github-readme-stats.vercel.app/api?username=abdivasiyev&show_icons=true&hide_title=false" alt="abdivasiyev" /></p>
