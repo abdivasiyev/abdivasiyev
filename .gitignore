@@ -1,0 +1,8 @@
+# Emacs packages installed by publish.el
+.packages/
+
+# The assembled site, built by `make build`. This is the only thing deployed;
+# it is wiped and rewritten on every build.
+_site/
+
+*.elc

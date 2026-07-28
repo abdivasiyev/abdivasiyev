@@ -1,0 +1,142 @@
+/* Styles for the org-exported blog pages. Mirrors the look of the CV page in
+   index.html, adapted to the container structure ox-html produces:
+   #preamble / #content / #postamble. */
+
+body {
+    font-size: 15px;
+}
+
+#preamble,
+#content,
+#postamble {
+    width: 80%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+#preamble {
+    padding-top: 1rem;
+}
+
+#postamble {
+    padding-bottom: 1rem;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+/* header ------------------------------------------------------------------ */
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-nav h5 {
+    margin: 0;
+}
+
+.site-nav a.site-name {
+    color: inherit;
+}
+
+.post-title {
+    margin-bottom: 0.25rem;
+}
+
+.post-meta {
+    color: #6c757d;
+}
+
+/* post list --------------------------------------------------------------- */
+
+.post-list-item + .post-list-item {
+    margin-top: 1.25rem;
+}
+
+.post-list-item h6 {
+    margin-bottom: 0.25rem;
+}
+
+/* post body --------------------------------------------------------------- */
+
+#content {
+    line-height: 1.7;
+}
+
+#content h2 {
+    font-size: 1.35rem;
+    margin-top: 1.75rem;
+}
+
+#content h3 {
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+}
+
+#content ul {
+    list-style-type: disc;
+}
+
+/* ox-html wraps src blocks in .org-src-container; example blocks are bare. */
+pre.src,
+pre.example {
+    padding: 12px 14px;
+    background: #f6f8fa;
+    border-radius: 4px;
+    overflow-x: auto;
+    line-height: 1.5;
+}
+
+.org-src-container {
+    margin: 1rem 0;
+}
+
+/* inline =verbatim= and ~code~ */
+:not(pre) > code {
+    padding: 2px 5px;
+    background: #f6f8fa;
+    border-radius: 3px;
+}
+
+blockquote {
+    margin: 1rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid rgba(0, 0, 0, 0.1);
+    color: #6c757d;
+}
+
+#content img {
+    max-width: 100%;
+    height: auto;
+}
+
+table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+th,
+td {
+    padding: 6px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* org emits a footnotes section with these classes */
+.footpara {
+    display: inline;
+    margin: 0;
+}
+
+#footnotes {
+    font-size: 0.9em;
+}

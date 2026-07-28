@@ -29,15 +29,65 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      # Fetch only what the build reads. README, Makefile, BLOG.md and editor
+      # config never reach the runner.
+      #
+      # Keep this in sync with `blog/root-files` in publish.el: a root file
+      # listed there but missing here fails the build rather than deploying a
+      # site with a hole in it.
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            /org/
+            /assets/
+            /publish.el
+            /index.html
+            /CNAME
+          sparse-checkout-cone-mode: false
+      # The runner has no Emacs, so it is installed from apt every run. Caching
+      # the .deb files skips the download; dpkg still runs, so post-install
+      # scripts (the /usr/bin/emacs alternative, in particular) happen normally.
+      # Bump the -v1 suffix in the key to force a refresh.
+      - name: Cache Emacs packages (.deb)
+        uses: actions/cache@v4
+        with:
+          path: ~/apt-archives
+          key: apt-emacs-nox-${{ runner.os }}-v1
+      - name: Install Emacs
+        run: |
+          mkdir -p ~/apt-archives/partial
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            -o Dir::Cache::archives="$HOME/apt-archives" \
+            -o APT::Keep-Downloaded-Packages=true \
+            emacs-nox
+          sudo chown -R "$(id -u):$(id -g)" ~/apt-archives
+
+      # htmlize and the major modes it fontifies with come from ELPA/MELPA.
+      # Keyed on publish.el, which holds the package list; restore-keys lets an
+      # unrelated edit to publish.el still reuse the previous download.
+      #
+      # BLOG_PACKAGE_DIR keeps these outside the working tree, so they cannot
+      # end up in _site/ and are not affected by anything the build does there.
+      - name: Cache Emacs packages (ELPA)
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/blog-emacs-packages
+          key: elpa-${{ runner.os }}-${{ hashFiles('publish.el') }}
+          restore-keys: elpa-${{ runner.os }}-
+      - name: Build blog
+        run: |
+          BLOG_PACKAGE_DIR="$HOME/.cache/blog-emacs-packages" \
+            emacs --batch --load publish.el --funcall blog/publish
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          # Upload entire repository
-          path: '.'
+          # Only the assembled site. Sources, tooling, editor config and notes
+          # stay in the repository and are never deployed.
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
