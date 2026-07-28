@@ -44,6 +44,7 @@ jobs:
             /publish.el
             /index.html
             /CNAME
+            /googled54f822cf550c551.html
           sparse-checkout-cone-mode: false
       # The runner has no Emacs, so it is installed from apt every run. Caching
       # the .deb files skips the download; dpkg still runs, so post-install
