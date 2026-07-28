@@ -61,6 +61,7 @@
 
 (defconst blog/root-files
   '("index.html"   ; the CV page
+    "googled54f822cf550c551.html" ;; google search verification
     "CNAME")       ; custom domain for GitHub Pages
   "Files copied verbatim from the repository root into the published site.
 Anything not listed here is never deployed.")
